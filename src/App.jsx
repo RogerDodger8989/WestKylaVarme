@@ -6,6 +6,7 @@ import Effekt from './tools/Effekt.jsx'
 import Energi from './tools/Energi.jsx'
 import Varmeoverforing from './tools/Varmeoverforing.jsx'
 import PT from './tools/PT.jsx'
+import Entalpi from './tools/Entalpi.jsx'
 
 const tabs = [
   { id: 'welcome', title: 'Start' },
@@ -66,6 +67,7 @@ export default function App() {
         {tab === 'energi' && <Energi />}
         {tab === 'varme' && <Varmeoverforing />}
         {tab === 'pt' && <PT />}
+        {tab === 'entalpi' && <Entalpi />}
         {tab === 'om' && <OmAppen />}
       </main>
 
