@@ -1,35 +1,53 @@
-# West Kyl & Värme (React + Vite)
+# West Kyla & Värme
 
-En liten PWA för grundläggande beräkningar inom värme/kylteknik.
+**West Kyla & Värme** är ett pedagogiskt beräkningsverktyg för studenter och yrkesverksamma inom värme- och kylteknik.  
+Appen är skapad som ett **fritids- och hobbyprojekt** av Dennis West och innehåller flera interaktiva verktyg för att underlätta förståelsen av begrepp, beräkningar och samband i kyltekniska system.
 
-## Funktioner
-- COP
-- Effekt: Q = m · cp · ΔT
-- Energiförbrukning (kWh/dygn och månad, valfri kostnadsberäkning)
-- Värmeöverföring: Q = U · A · ΔT
-- Tryck–Temperatur (förenklade mättnadsdata för några köldmedier)
-- Ljus/mörkt tema
-- Sparar senaste inmatningar lokalt
-- Mobilanpassad (fungerar i stående/liggande läge)
-- PWA: kan läggas till som app på hemskärmen
+---
 
-## Kör lokalt
-```bash
-npm install
-npm run dev
-```
+## ⚙️ Funktioner
 
-## Bygg
-```bash
-npm run build
-npm run preview
-```
+### 🌀 Cykelsimulering
+Justera parametrar som **förångning, kondensation, överhettning** och **underkylning** för att se hur systemets prestanda och COP påverkas i realtid.
 
-## Publicera
-- Ladda upp till GitHub och koppla till Netlify eller Vercel.
-- Appen fungerar som PWA: manifest och service worker ingår.
+### 🔄 Omvandlare
+Konvertera mellan vanliga enheter inom kyl- och värmeteknik – t.ex. **bar ↔ Pa**, **°C ↔ K**, **kJ/kg ↔ Btu/lb**.
 
+### 🧱 Material
+Jämför **värmeledningsförmåga (λ)**, **värmekapacitet (cp)** och **densitet (ρ)** för olika material i tabell- och diagramform.
 
-## Nytt i denna version
-- Fler köldmedier i PT-tabellen och växling °C/K
-- Ny flik: Entalpi (h–log p) med förenklad schematisk cykel och interaktiv graf (Recharts)
+### 📊 Mätdata
+Mata in egna mätvärden (T1, T2, P1, P2, flöde, eleffekt) och få automatiskt **ΔT**, **värmeeffekt** och **COP** beräknade.
+
+### 📘 Ordlista
+Utforska ett stort antal centrala begrepp inom värme- och kylteknik.  
+- Sök bland orden i realtid.  
+- Lägg till egna begrepp.  
+- Redigera eller ta bort poster.  
+- Exportera eller importera ordlistan (`.json`-fil).  
+- Allt sparas lokalt i din webbläsare.
+
+### ℹ️ Om appen
+Förklarar appens syfte, funktioner och begränsningar.
+
+---
+
+## 🧩 Teknisk information
+
+- Byggd med **React + Vite**
+- Fullt **responsiv design** (mobil, surfplatta, dator)
+- Mörkt och ljust läge
+- Alla data sparas lokalt i **localStorage**
+- **Ingen internetuppkoppling krävs** efter första laddning
+
+---
+
+## 🧑‍💻 Installation och körning
+Alternativ 1
+1. Klona eller ladda ner projektet.
+2. Öppna terminalen (CMD) i projektmappen och kör:
+
+   npm install
+   npm run dev
+   
+3. Öppna länken som visas i terminalen, oftast: http://localhost:5173

@@ -1,7 +1,7 @@
 {
-  "name": "west-kyl-varme",
+  "name": "west-kyla-varme",
   "private": true,
-  "version": "0.0.1",
+  "version": "4.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "recharts": "^2.12.7"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",

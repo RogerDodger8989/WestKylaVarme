@@ -1,79 +1,95 @@
-import React, { useEffect, useState } from 'react'
-import Welcome from './pages/Welcome.jsx'
-import OmAppen from './pages/OmAppen.jsx'
-import Cop from './tools/Cop.jsx'
-import Effekt from './tools/Effekt.jsx'
-import Energi from './tools/Energi.jsx'
-import Varmeoverforing from './tools/Varmeoverforing.jsx'
-import PT from './tools/PT.jsx'
-import Entalpi from './tools/Entalpi.jsx'
-
-const tabs = [
-  { id: 'welcome', title: 'Start' },
-  { id: 'cop', title: 'COP' },
-  { id: 'effekt', title: 'Effekt' },
-  { id: 'energi', title: 'Energi' },
-  { id: 'varme', title: 'Värmeöverföring' },
-  { id: 'pt', title: 'Tryck–Temp' },
-  { id: 'om', title: 'Om appen' },
-]
+import React, { useState, useEffect } from "react";
+import OmAppen from "./pages/OmAppen.jsx";
+import Glossary from "./tools/Glossary.jsx";
+import Materials from "./tools/Materials.jsx";
+import Lab from "./tools/LabData.jsx";
+import Converter from "./tools/Converter.jsx";
+import CycleSim from "./tools/CycleSim.jsx";
+import Cop from "./tools/Cop.jsx";
+import Effekt from "./tools/Effekt.jsx";
+import Energi from "./tools/Energi.jsx";
+import PT from "./tools/PT.jsx";
+import Varmeoverforing from "./tools/Varmeoverforing.jsx";
+import "./styles.css";
+import logo from "./assets/logo.png";
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
-  const [tab, setTab] = useState('welcome')
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+  const [tab, setTab] = useState("om");
 
   useEffect(() => {
-    document.body.classList.toggle('light', theme === 'light')
-    localStorage.setItem('theme', theme)
-  }, [theme])
+    document.body.classList.toggle("light", theme === "light");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-  useEffect(() => {
-    const handle = (e) => {
-      if (e.key === 't' && (e.ctrlKey || e.metaKey)) setTheme(t => t === 'light' ? 'dark' : 'light')
-    }
-    window.addEventListener('keydown', handle)
-    return () => window.removeEventListener('keydown', handle)
-  }, [])
+  const tabs = [
+    { id: "om", title: "Start" },
+    { id: "cykel", title: "Cykelsimulering" },
+    { id: "converter", title: "Omvandlare" },
+    { id: "glossary", title: "Ordlista" },
+    { id: "materials", title: "Material" },
+    { id: "lab", title: "Mätdata" },
+    { id: "cop", title: "COP" },
+    { id: "effekt", title: "Effekt" },
+    { id: "energi", title: "Energi" },
+    { id: "varme", title: "Värmeöverföring" },
+    { id: "pt", title: "Tryck–Temp" },
+  ];
 
   return (
     <div className="app">
+      {/* HEADER */}
       <header className="header">
         <div className="header-inner">
-          <div className="brand-mark" />
-          <div>
-            <div className="title">West Kyl & Värme</div>
-            <div style={{ fontSize: 12, color: 'var(--muted)' }}>West Kyl & Värme-teknik</div>
+          <img src={logo} alt="Logotyp" className="logo" />
+          <div className="header-text">
+            <div className="title">West Kyla & Värme</div>
+            <div className="subtitle">Beräkningsverktyg för värme- och kylteknik</div>
           </div>
           <div className="grow" />
-          <div className="toolbar">
-            <button className="btn" onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
-              {theme === 'light' ? 'Mörkt läge' : 'Ljust läge'}
-            </button>
-          </div>
+          <button
+            className="btn-icon"
+            title={theme === "light" ? "Mörkt läge" : "Ljust läge"}
+            onClick={() => setTheme(t => (t === "light" ? "dark" : "light"))}
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
         </div>
-        <div className="tabbar">
+
+        <nav className="tabbar">
           {tabs.map(t => (
-            <div key={t.id} className={'tab ' + (tab === t.id ? 'active' : '')} onClick={() => setTab(t.id)}>
+            <div
+              key={t.id}
+              className={`tab ${tab === t.id ? "active" : ""}`}
+              onClick={() => setTab(t.id)}
+            >
               {t.title}
             </div>
           ))}
-        </div>
+        </nav>
       </header>
 
+      {/* SIDINNEHÅLL */}
       <main className="content">
-        {tab === 'welcome' && <Welcome />}
-        {tab === 'cop' && <Cop />}
-        {tab === 'effekt' && <Effekt />}
-        {tab === 'energi' && <Energi />}
-        {tab === 'varme' && <Varmeoverforing />}
-        {tab === 'pt' && <PT />}
-        {tab === 'entalpi' && <Entalpi />}
-        {tab === 'om' && <OmAppen />}
+        {tab === "om" && <OmAppen />}
+        {tab === "cykel" && <CycleSim />}
+        {tab === "converter" && <Converter />}
+        {tab === "glossary" && <Glossary />}
+        {tab === "materials" && <Materials />}
+        {tab === "lab" && <Lab />}
+        {tab === "cop" && <Cop />}
+        {tab === "effekt" && <Effekt />}
+        {tab === "energi" && <Energi />}
+        {tab === "varme" && <Varmeoverforing />}
+        {tab === "pt" && <PT />}
       </main>
 
-      <div className="footer">
-        © {new Date().getFullYear()} West Kyl & Värme-teknik — Byggd för studerande & installatörer.
-      </div>
+      {/* FOOTER */}
+      <footer className="footer">
+        <p>Skapad av: Dennis West</p>
+        <p>© 2025 West Kyla & Värme</p>
+        <p><a href="mailto:info@westkylavarme.se">info@westkylavarme.se</a></p>
+      </footer>
     </div>
-  )
+  );
 }
